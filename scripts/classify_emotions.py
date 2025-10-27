@@ -202,7 +202,7 @@ class EmotionClassifier:
                     yticklabels=labeled_tokens,
                     cmap="viridis")
         plt.title("Attention Heatmap (last layer, head 0)")
-        plt.xticks(rotation=45)
+        plt.xticks(rotation=90)
         plt.tight_layout()
         plt.show()
 
