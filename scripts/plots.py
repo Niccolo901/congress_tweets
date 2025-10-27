@@ -48,7 +48,7 @@ def plot_emotion_distribution_change(*, period_dfs, column="emotion_group", titl
         palette=palette
     )
 
-    # --- Add percentage labels on top of bars ---
+    #  Add percentage labels on top of bars
     for container in ax.containers:
         ax.bar_label(
             container,
@@ -114,7 +114,7 @@ def plot_emotions_by_party_and_period(
     )
     grouped["Party"] = grouped["Party"].map({"D": "Democrats", "R": "Republicans"})
 
-    # Consistent emotion order (user-provided or data-driven)
+    # Consistent emotion order
     if emotion_order is None:
         emotion_order = (
             grouped.groupby("Emotion")["count"].sum().sort_values(ascending=False).index.tolist()
@@ -159,7 +159,7 @@ def plot_emotions_by_party_and_period(
         legend_out=True,
     )
 
-    # --- axes formatting + labels on bars ---
+    #  axes formatting + labels on bars 
     for ax in g.axes.flatten():
         ax.set_xlabel("Emotion")
         ax.set_ylabel("Relative Frequency" + (" (%)" if show_percent_labels else ""))
@@ -288,7 +288,6 @@ def plot_emotion_shift_by_party(
         ax.grid(axis="y", linestyle=":", alpha=0.5)
         ax.set_axisbelow(True)
 
-        # ✅ labels on top of the bars (handles grouped bars per hue)
         for container in ax.containers:
             if show_percent_labels:
                 labels = [f"{h*100:+.0f}%" if (h := rect.get_height()) != 0 else "" for rect in container]
